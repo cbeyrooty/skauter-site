@@ -185,7 +185,7 @@ function App() {
             letter-spacing: 0.12em;
         }
         
-        /* Refined red glow background on hover */
+        /* Natural neon red glow background on hover */
         .brand-container::before {
             content: '';
             position: absolute;
@@ -194,22 +194,27 @@ function App() {
             transform: translate(-50%, -50%);
             width: 0;
             height: 0;
-            background: radial-gradient(
-                ellipse, 
-                rgba(228, 30, 32, 0.15) 0%, 
-                rgba(228, 30, 32, 0.08) 40%, 
-                rgba(212, 175, 55, 0.05) 70%, 
-                transparent 100%
-            );
-            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: 
+                radial-gradient(
+                    circle, 
+                    rgba(255, 30, 30, 0.8) 0%, 
+                    rgba(255, 50, 50, 0.6) 10%, 
+                    rgba(228, 30, 32, 0.4) 20%, 
+                    rgba(228, 30, 32, 0.2) 35%, 
+                    rgba(200, 30, 32, 0.1) 50%, 
+                    rgba(150, 20, 25, 0.05) 70%, 
+                    transparent 100%
+                );
+            transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 0;
             border-radius: 50%;
-            filter: blur(1px);
+            filter: blur(3px);
         }
         
         .brand-container:hover::before {
-            width: 700px;
-            height: 450px;
+            width: 800px;
+            height: 600px;
+            filter: blur(8px);
         }
         
         /* Ornate decorative lines */
@@ -265,9 +270,9 @@ function App() {
             transform: translateX(-50%) translateY(-5px);
         }
         
-        /* Tagline - moved up */
+        /* Tagline - moved much closer */
         .tagline {
-            margin-top: 1.2rem;
+            margin-top: 0.3rem;
             font-size: clamp(1.3rem, 2.5vw, 1.9rem);
             font-weight: 400;
             letter-spacing: 0.15em;
@@ -277,9 +282,9 @@ function App() {
             text-align: center;
         }
         
-        /* Services - moved up and single line */
+        /* Services - moved much closer and single line */
         .services {
-            margin-top: 0.8rem;
+            margin-top: 0.2rem;
             font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             letter-spacing: 0.4em;
             text-transform: uppercase;
@@ -404,6 +409,14 @@ function App() {
             
             .brand-container:hover .brand-title {
                 letter-spacing: 0.08em;
+            }
+            
+            .tagline {
+                margin-top: 0.2rem;
+            }
+            
+            .services {
+                margin-top: 0.1rem;
             }
         }
     </style>
