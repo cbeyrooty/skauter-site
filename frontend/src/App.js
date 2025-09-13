@@ -391,7 +391,7 @@ function App() {
         /* Mobile-first responsive breakpoints with better subheader positioning */
         @media (max-width: 480px) {
             .brand-title {
-                font-size: clamp(2.5rem, 15vw, 4rem);
+                font-size: clamp(3.5rem, 18vw, 6rem);
                 letter-spacing: clamp(0.02em, 0.06em, 0.08em);
             }
             
