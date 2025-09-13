@@ -135,7 +135,7 @@ function App() {
             pointer-events: none;
             transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
-            background-image: url('https://customer-assets.emergentagent.com/job_regal-cinema/artifacts/qlkwn46v_11be3fccf281946e79f783aa66b566a3.png');
+            background-image: url('https://customer-assets.emergentagent.com/job_regal-cinema/artifacts/5fnmknp9_flag-of-albania-double-headed-eagle-albanian-declaration-of-independence-flag-12c817f826e14415f674253c43f0f07f.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
