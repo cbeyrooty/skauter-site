@@ -11,7 +11,7 @@ function App() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skauter - Albania's Gateway for Film Production</title>
+    <title>Skauter - Albania's Film Hub</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400&family=Playfair+Display:wght@400;500;600;700;900&display=swap');
         
