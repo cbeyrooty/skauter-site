@@ -123,7 +123,7 @@ function App() {
             max-width: 90vw;
         }
         
-        /* Hidden eagle that appears on hover */
+        /* Hidden eagle that appears on hover - LOWER Z-INDEX */
         .eagle-crest {
             position: absolute;
             top: 50%;
@@ -282,9 +282,9 @@ function App() {
         
         /* Crown will NOT appear on hover */
         
-        /* Responsive tagline */
+        /* Responsive tagline - HIGHER Z-INDEX and better positioning */
         .tagline {
-            margin-top: clamp(0.2rem, 1vw, 0.5rem);
+            margin-top: clamp(0.2rem, 0.8vw, 0.8rem);
             font-size: clamp(1rem, 2.5vw, 1.9rem);
             font-weight: 400;
             letter-spacing: clamp(0.08em, 0.15em, 0.2em);
@@ -294,11 +294,13 @@ function App() {
             text-align: center;
             max-width: 90vw;
             line-height: 1.3;
+            z-index: 15;
+            position: relative;
         }
         
-        /* Responsive services */
+        /* Responsive services - HIGHER Z-INDEX and better positioning */
         .services {
-            margin-top: clamp(0.1rem, 0.5vw, 0.3rem);
+            margin-top: clamp(0.1rem, 0.4vw, 0.4rem);
             font-size: clamp(0.7rem, 1.8vw, 1.3rem);
             letter-spacing: clamp(0.2em, 0.4em, 0.6em);
             text-transform: uppercase;
@@ -310,6 +312,8 @@ function App() {
             justify-content: center;
             flex-wrap: wrap;
             max-width: 90vw;
+            z-index: 15;
+            position: relative;
         }
         
         .service-divider {
@@ -384,7 +388,7 @@ function App() {
             }
         }
         
-        /* Mobile-first responsive breakpoints */
+        /* Mobile-first responsive breakpoints with better subheader positioning */
         @media (max-width: 480px) {
             .brand-title {
                 font-size: clamp(2.5rem, 15vw, 4rem);
@@ -397,14 +401,14 @@ function App() {
             
             .tagline {
                 font-size: clamp(0.9rem, 4vw, 1.2rem);
-                margin-top: clamp(0.3rem, 2vw, 0.5rem);
+                margin-top: clamp(0.4rem, 2vw, 0.8rem);
                 line-height: 1.4;
             }
             
             .services {
                 font-size: clamp(0.6rem, 3vw, 0.9rem);
                 letter-spacing: clamp(0.15em, 0.3em, 0.4em);
-                margin-top: clamp(0.2rem, 1vw, 0.3rem);
+                margin-top: clamp(0.3rem, 1.5vw, 0.5rem);
             }
             
             .service-divider {
@@ -438,10 +442,12 @@ function App() {
             
             .tagline {
                 font-size: clamp(1.1rem, 3vw, 1.5rem);
+                margin-top: clamp(0.5rem, 1.2vw, 1rem);
             }
             
             .services {
                 font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+                margin-top: clamp(0.3rem, 0.8vw, 0.6rem);
             }
             
             .eagle-crest {
@@ -454,11 +460,27 @@ function App() {
             .brand-title {
                 font-size: clamp(4rem, 10vw, 8rem);
             }
+            
+            .tagline {
+                margin-top: clamp(0.6rem, 1vw, 1.2rem);
+            }
+            
+            .services {
+                margin-top: clamp(0.4rem, 0.6vw, 0.8rem);
+            }
         }
         
         @media (min-width: 1025px) {
             .brand-title {
                 font-size: clamp(6rem, 8vw, 11rem);
+            }
+            
+            .tagline {
+                margin-top: clamp(0.8rem, 1.2vw, 1.5rem);
+            }
+            
+            .services {
+                margin-top: clamp(0.5rem, 0.8vw, 1rem);
             }
         }
         
@@ -470,12 +492,12 @@ function App() {
             
             .tagline {
                 font-size: clamp(0.8rem, 3vh, 1.2rem);
-                margin-top: clamp(0.2rem, 1vh, 0.3rem);
+                margin-top: clamp(0.3rem, 1vh, 0.6rem);
             }
             
             .services {
                 font-size: clamp(0.6rem, 2.5vh, 1rem);
-                margin-top: clamp(0.1rem, 0.5vh, 0.2rem);
+                margin-top: clamp(0.2rem, 0.8vh, 0.4rem);
             }
             
             .footer {
@@ -487,6 +509,44 @@ function App() {
         @media (min-width: 1920px) {
             .brand-title {
                 font-size: clamp(8rem, 6vw, 12rem);
+            }
+            
+            .tagline {
+                margin-top: clamp(1rem, 1.5vw, 2rem);
+            }
+            
+            .services {
+                margin-top: clamp(0.6rem, 1vw, 1.4rem);
+            }
+        }
+        
+        /* Extra responsiveness for very small screens */
+        @media (max-width: 320px) {
+            .tagline {
+                margin-top: clamp(0.5rem, 3vw, 0.8rem);
+                font-size: clamp(0.8rem, 5vw, 1rem);
+            }
+            
+            .services {
+                margin-top: clamp(0.4rem, 2.5vw, 0.6rem);
+                font-size: clamp(0.5rem, 4vw, 0.8rem);
+            }
+        }
+        
+        /* Extra responsiveness for very wide screens */
+        @media (min-width: 2560px) {
+            .brand-title {
+                font-size: clamp(10rem, 5vw, 14rem);
+            }
+            
+            .tagline {
+                margin-top: clamp(1.5rem, 2vw, 2.5rem);
+                font-size: clamp(1.8rem, 2vw, 2.5rem);
+            }
+            
+            .services {
+                margin-top: clamp(1rem, 1.5vw, 1.8rem);
+                font-size: clamp(1.2rem, 1.5vw, 1.8rem);
             }
         }
     </style>
@@ -508,7 +568,7 @@ function App() {
         <!-- Central heraldic content -->
         <div class="heraldic-center">
             <div class="brand-container">
-                <!-- Custom eagle image that appears on hover -->
+                <!-- Custom eagle image that appears on hover - BEHIND TEXT -->
                 <div class="eagle-crest"></div>
                 
                 <!-- Crown ornament - HIDDEN, no longer appears on hover -->
