@@ -508,7 +508,7 @@ function App() {
         /* Ultra-wide screens */
         @media (min-width: 1920px) {
             .brand-title {
-                font-size: clamp(8rem, 6vw, 12rem);
+                font-size: clamp(10rem, 10vw, 18rem);
             }
             
             .tagline {
