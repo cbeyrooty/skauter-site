@@ -120,21 +120,21 @@ function App() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 300px;
+            width: 450px;
+            height: 350px;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.8s ease;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
-            background-image: url('https://images.unsplash.com/photo-1635871663512-0ec97088cadb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwxfHxkb3VibGUlMjBoZWFkZWQlMjBlYWdsZXxlbnwwfHx8fDE3NTc3MzEwNDl8MA&ixlib=rb-4.1.0&q=85');
+            background-image: url('https://customer-assets.emergentagent.com/job_regal-cinema/artifacts/qlkwn46v_11be3fccf281946e79f783aa66b566a3.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            filter: sepia(1) hue-rotate(30deg) saturate(0.8) brightness(0.7);
+            filter: sepia(0.3) saturate(1.2) brightness(0.8) contrast(1.1);
         }
         
         .brand-container:hover .eagle-crest {
-            opacity: 0.4;
+            opacity: 0.6;
         }
         
         /* Brand title container */
@@ -148,41 +148,44 @@ function App() {
             font-family: 'Bodoni Moda', serif;
             font-size: clamp(5rem, 14vw, 11rem);
             font-weight: 400;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.08em;
             color: var(--silver);
             text-transform: uppercase;
             position: relative;
             z-index: 5;
             opacity: 0;
             animation: titleReveal 2s ease-out 0.5s forwards;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         @keyframes titleReveal {
             0% {
                 opacity: 0;
-                letter-spacing: 0.5em;
+                letter-spacing: 0.3em;
                 transform: translateY(20px);
             }
             100% {
                 opacity: 1;
-                letter-spacing: 0.25em;
+                letter-spacing: 0.08em;
                 transform: translateY(0);
             }
         }
         
-        /* Hover effect - gold glow on letters */
+        /* Refined hover effect - sophisticated gold glow */
         .brand-container:hover .brand-title {
             color: var(--bright-gold);
             text-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.8),
-                0 0 40px rgba(255, 215, 0, 0.6),
-                0 0 60px rgba(255, 215, 0, 0.4),
-                0 2px 4px rgba(0,0,0,0.5);
+                0 0 10px rgba(255, 215, 0, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2),
+                0 0 40px rgba(255, 215, 0, 0.1),
+                0 4px 8px rgba(0,0,0,0.6),
+                0 1px 0 rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.12em;
         }
         
-        /* Red glow background on hover */
+        /* Refined red glow background on hover */
         .brand-container::before {
             content: '';
             position: absolute;
@@ -191,15 +194,22 @@ function App() {
             transform: translate(-50%, -50%);
             width: 0;
             height: 0;
-            background: radial-gradient(ellipse, rgba(228, 30, 32, 0.6), transparent 70%);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: radial-gradient(
+                ellipse, 
+                rgba(228, 30, 32, 0.15) 0%, 
+                rgba(228, 30, 32, 0.08) 40%, 
+                rgba(212, 175, 55, 0.05) 70%, 
+                transparent 100%
+            );
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 0;
             border-radius: 50%;
+            filter: blur(1px);
         }
         
         .brand-container:hover::before {
-            width: 600px;
-            height: 400px;
+            width: 700px;
+            height: 450px;
         }
         
         /* Ornate decorative lines */
@@ -207,54 +217,57 @@ function App() {
             position: absolute;
             top: 50%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6) 20%, rgba(212, 175, 55, 0.8) 50%, rgba(212, 175, 55, 0.6) 80%, transparent);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .ornate-line-left {
             right: 100%;
-            width: 120px;
+            width: 140px;
             transform: translateY(-50%);
         }
         
         .ornate-line-right {
             left: 100%;
-            width: 120px;
+            width: 140px;
             transform: translateY(-50%);
         }
         
         .brand-container:hover .ornate-line {
-            opacity: 0.8;
+            opacity: 0.9;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
         }
         
         .brand-container:hover .ornate-line-left {
-            transform: translateY(-50%) translateX(-20px);
+            transform: translateY(-50%) translateX(-25px);
         }
         
         .brand-container:hover .ornate-line-right {
-            transform: translateY(-50%) translateX(20px);
+            transform: translateY(-50%) translateX(25px);
         }
         
         /* Crown ornament above title */
         .crown-ornament {
             position: absolute;
-            top: -40px;
+            top: -50px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 40px;
+            width: 90px;
+            height: 45px;
             opacity: 0;
-            transition: opacity 0.8s ease 0.3s;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+            filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
         }
         
         .brand-container:hover .crown-ornament {
-            opacity: 0.6;
+            opacity: 0.7;
+            transform: translateX(-50%) translateY(-5px);
         }
         
-        /* Tagline */
+        /* Tagline - moved up */
         .tagline {
-            margin-top: 2.5rem;
+            margin-top: 1.2rem;
             font-size: clamp(1.3rem, 2.5vw, 1.9rem);
             font-weight: 400;
             letter-spacing: 0.15em;
@@ -264,9 +277,9 @@ function App() {
             text-align: center;
         }
         
-        /* Services - single line */
+        /* Services - moved up and single line */
         .services {
-            margin-top: 1.5rem;
+            margin-top: 0.8rem;
             font-size: clamp(0.9rem, 1.8vw, 1.3rem);
             letter-spacing: 0.4em;
             text-transform: uppercase;
@@ -382,7 +395,15 @@ function App() {
             
             .eagle-crest {
                 width: 300px;
-                height: 200px;
+                height: 220px;
+            }
+            
+            .brand-title {
+                letter-spacing: 0.05em;
+            }
+            
+            .brand-container:hover .brand-title {
+                letter-spacing: 0.08em;
             }
         }
     </style>
@@ -404,17 +425,17 @@ function App() {
         <!-- Central heraldic content -->
         <div class="heraldic-center">
             <div class="brand-container">
-                <!-- Luxury eagle image that appears on hover -->
+                <!-- Custom eagle image that appears on hover -->
                 <div class="eagle-crest"></div>
                 
                 <!-- Crown ornament -->
                 <div class="crown-ornament">
-                    <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 90 45" xmlns="http://www.w3.org/2000/svg">
                         <g fill="none" stroke="#D4AF37" stroke-width="1">
-                            <path d="M10 30 L20 10 L30 25 L40 5 L50 25 L60 10 L70 30 Z"/>
-                            <circle cx="20" cy="10" r="3" fill="#D4AF37"/>
-                            <circle cx="40" cy="5" r="4" fill="#D4AF37"/>
-                            <circle cx="60" cy="10" r="3" fill="#D4AF37"/>
+                            <path d="M10 35 L20 12 L30 28 L45 8 L60 28 L70 12 L80 35 Z"/>
+                            <circle cx="20" cy="12" r="3" fill="#D4AF37"/>
+                            <circle cx="45" cy="8" r="4" fill="#D4AF37"/>
+                            <circle cx="70" cy="12" r="3" fill="#D4AF37"/>
                         </g>
                     </svg>
                 </div>
@@ -445,14 +466,14 @@ function App() {
     </div>
     
     <script>
-        // Subtle parallax on mouse move
+        // Enhanced parallax on mouse move
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.querySelector('.container');
             const eagle = document.querySelector('.eagle-crest');
             
             container.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 10;
-                const y = (e.clientY / window.innerHeight - 0.5) * 10;
+                const x = (e.clientX / window.innerWidth - 0.5) * 8;
+                const y = (e.clientY / window.innerHeight - 0.5) * 8;
                 
                 if (eagle) {
                     eagle.style.transform = \`translate(calc(-50% + \${x}px), calc(-50% + \${y}px))\`;
