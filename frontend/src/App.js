@@ -158,7 +158,7 @@ function App() {
         
         .brand-title {
             font-family: 'Bodoni Moda', serif;
-            font-size: clamp(3rem, 12vw, 11rem);
+            font-size: clamp(5rem, 16vw, 14rem);
             font-weight: 400;
             letter-spacing: clamp(0.04em, 0.08em, 0.12em);
             color: var(--silver);
