@@ -34,31 +34,37 @@ function App() {
         
         html, body {
             height: 100%;
+            width: 100%;
             overflow: hidden;
             background: var(--deep-black);
             font-family: 'Playfair Display', serif;
         }
         
-        /* Main container */
+        /* Main container - always full viewport */
         .container {
             height: 100vh;
+            width: 100vw;
+            min-height: 100vh;
+            min-width: 100vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
             background: 
                 radial-gradient(ellipse at center, rgba(26, 26, 26, 1) 0%, var(--deep-black) 70%),
                 var(--deep-black);
         }
         
-        /* Ornate border frame */
+        /* Responsive ornate border frame */
         .ornate-frame {
             position: absolute;
-            top: 40px;
-            left: 40px;
-            right: 40px;
-            bottom: 40px;
+            top: min(40px, 3vh);
+            left: min(40px, 3vw);
+            right: min(40px, 3vw);
+            bottom: min(40px, 3vh);
             border: 1px solid rgba(212, 175, 55, 0.3);
             pointer-events: none;
         }
@@ -73,35 +79,36 @@ function App() {
             border: 2px solid rgba(212, 175, 55, 0.1);
         }
         
-        /* Heraldic corner flourishes */
+        /* Responsive heraldic corner flourishes */
         .flourish {
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: min(150px, 12vw);
+            height: min(150px, 12vw);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='1' opacity='0.5'%3E%3Cpath d='M10 10 Q30 10 30 30 Q10 30 10 50 Q30 50 30 70'/%3E%3Cpath d='M10 10 Q10 30 30 30 Q30 10 50 10 Q50 30 70 30'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23D4AF37'/%3E%3Cpath d='M5 5 L5 25 M5 5 L25 5'/%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.6;
+            background-size: contain;
         }
         
         .flourish-tl {
-            top: 30px;
-            left: 30px;
+            top: min(30px, 2.5vh);
+            left: min(30px, 2.5vw);
         }
         
         .flourish-tr {
-            top: 30px;
-            right: 30px;
+            top: min(30px, 2.5vh);
+            right: min(30px, 2.5vw);
             transform: rotate(90deg);
         }
         
         .flourish-bl {
-            bottom: 30px;
-            left: 30px;
+            bottom: min(30px, 2.5vh);
+            left: min(30px, 2.5vw);
             transform: rotate(-90deg);
         }
         
         .flourish-br {
-            bottom: 30px;
-            right: 30px;
+            bottom: min(30px, 2.5vh);
+            right: min(30px, 2.5vw);
             transform: rotate(180deg);
         }
         
@@ -112,6 +119,8 @@ function App() {
             flex-direction: column;
             align-items: center;
             z-index: 10;
+            width: 100%;
+            max-width: 90vw;
         }
         
         /* Hidden eagle that appears on hover */
@@ -120,8 +129,8 @@ function App() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 450px;
-            height: 350px;
+            width: min(450px, 40vw);
+            height: min(350px, 30vw);
             opacity: 0;
             pointer-events: none;
             transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -141,14 +150,17 @@ function App() {
         .brand-container {
             position: relative;
             cursor: default;
-            padding: 2rem 4rem;
+            padding: min(2rem, 3vw) min(4rem, 6vw);
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
         
         .brand-title {
             font-family: 'Bodoni Moda', serif;
-            font-size: clamp(5rem, 14vw, 11rem);
+            font-size: clamp(3rem, 12vw, 11rem);
             font-weight: 400;
-            letter-spacing: 0.08em;
+            letter-spacing: clamp(0.04em, 0.08em, 0.12em);
             color: var(--silver);
             text-transform: uppercase;
             position: relative;
@@ -157,17 +169,19 @@ function App() {
             animation: titleReveal 2s ease-out 0.5s forwards;
             transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-align: center;
+            white-space: nowrap;
         }
         
         @keyframes titleReveal {
             0% {
                 opacity: 0;
-                letter-spacing: 0.3em;
+                letter-spacing: clamp(0.2em, 0.3em, 0.4em);
                 transform: translateY(20px);
             }
             100% {
                 opacity: 1;
-                letter-spacing: 0.08em;
+                letter-spacing: clamp(0.04em, 0.08em, 0.12em);
                 transform: translateY(0);
             }
         }
@@ -182,7 +196,7 @@ function App() {
                 0 0 40px rgba(255, 215, 0, 0.1),
                 0 4px 8px rgba(0,0,0,0.6),
                 0 1px 0 rgba(255, 255, 255, 0.1);
-            letter-spacing: 0.12em;
+            letter-spacing: clamp(0.08em, 0.12em, 0.16em);
         }
         
         /* Natural neon red glow background on hover */
@@ -212,12 +226,12 @@ function App() {
         }
         
         .brand-container:hover::before {
-            width: 800px;
-            height: 600px;
+            width: min(800px, 80vw);
+            height: min(600px, 60vh);
             filter: blur(8px);
         }
         
-        /* Ornate decorative lines */
+        /* Responsive ornate decorative lines */
         .ornate-line {
             position: absolute;
             top: 50%;
@@ -229,13 +243,13 @@ function App() {
         
         .ornate-line-left {
             right: 100%;
-            width: 140px;
+            width: min(140px, 12vw);
             transform: translateY(-50%);
         }
         
         .ornate-line-right {
             left: 100%;
-            width: 140px;
+            width: min(140px, 12vw);
             transform: translateY(-50%);
         }
         
@@ -245,14 +259,14 @@ function App() {
         }
         
         .brand-container:hover .ornate-line-left {
-            transform: translateY(-50%) translateX(-25px);
+            transform: translateY(-50%) translateX(min(-25px, -2vw));
         }
         
         .brand-container:hover .ornate-line-right {
-            transform: translateY(-50%) translateX(25px);
+            transform: translateY(-50%) translateX(min(25px, 2vw));
         }
         
-        /* Crown ornament above title */
+        /* Crown ornament above title - REMOVED FROM HOVER */
         .crown-ornament {
             position: absolute;
             top: -50px;
@@ -263,60 +277,63 @@ function App() {
             opacity: 0;
             transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
             filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
+            pointer-events: none;
         }
         
-        .brand-container:hover .crown-ornament {
-            opacity: 0.7;
-            transform: translateX(-50%) translateY(-5px);
-        }
+        /* Crown will NOT appear on hover */
         
-        /* Tagline - moved much closer */
+        /* Responsive tagline */
         .tagline {
-            margin-top: 0.3rem;
-            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            margin-top: clamp(0.2rem, 1vw, 0.5rem);
+            font-size: clamp(1rem, 2.5vw, 1.9rem);
             font-weight: 400;
-            letter-spacing: 0.15em;
+            letter-spacing: clamp(0.08em, 0.15em, 0.2em);
             color: rgba(244, 228, 193, 0.9);
             opacity: 0;
             animation: fadeIn 1.5s ease-out 1.2s forwards;
             text-align: center;
+            max-width: 90vw;
+            line-height: 1.3;
         }
         
-        /* Services - moved much closer and single line */
+        /* Responsive services */
         .services {
-            margin-top: 0.2rem;
-            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
-            letter-spacing: 0.4em;
+            margin-top: clamp(0.1rem, 0.5vw, 0.3rem);
+            font-size: clamp(0.7rem, 1.8vw, 1.3rem);
+            letter-spacing: clamp(0.2em, 0.4em, 0.6em);
             text-transform: uppercase;
             color: var(--gold);
             opacity: 0;
             animation: fadeIn 1.5s ease-out 1.5s forwards;
             display: flex;
             align-items: center;
-            white-space: nowrap;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 90vw;
         }
         
         .service-divider {
-            margin: 0 1.5rem;
+            margin: 0 clamp(0.5rem, 1.5vw, 1.5rem);
             color: rgba(212, 175, 55, 0.6);
             font-size: 0.8em;
         }
         
-        /* Footer */
+        /* Responsive footer */
         .footer {
             position: absolute;
-            bottom: 60px;
+            bottom: min(60px, 8vh);
             text-align: center;
             z-index: 10;
             opacity: 0;
             animation: fadeIn 1.5s ease-out 2s forwards;
+            width: 100%;
         }
         
         .contact-email {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-size: clamp(0.9rem, 2vw, 1.5rem);
             color: rgba(244, 228, 193, 0.8);
             text-decoration: none;
-            letter-spacing: 0.08em;
+            letter-spacing: clamp(0.04em, 0.08em, 0.12em);
             transition: all 0.4s ease;
             display: inline-block;
             position: relative;
@@ -367,56 +384,109 @@ function App() {
             }
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .ornate-frame {
-                top: 20px;
-                left: 20px;
-                right: 20px;
-                bottom: 20px;
-            }
-            
-            .flourish {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .flourish-tl { top: 10px; left: 10px; }
-            .flourish-tr { top: 10px; right: 10px; }
-            .flourish-bl { bottom: 10px; left: 10px; }
-            .flourish-br { bottom: 10px; right: 10px; }
-            
-            .services {
-                font-size: clamp(0.7rem, 2vw, 1rem);
-            }
-            
-            .service-divider {
-                margin: 0 0.8rem;
-            }
-            
-            .brand-container {
-                padding: 2rem;
-            }
-            
-            .eagle-crest {
-                width: 300px;
-                height: 220px;
-            }
-            
+        /* Mobile-first responsive breakpoints */
+        @media (max-width: 480px) {
             .brand-title {
-                letter-spacing: 0.05em;
+                font-size: clamp(2.5rem, 15vw, 4rem);
+                letter-spacing: clamp(0.02em, 0.06em, 0.08em);
             }
             
             .brand-container:hover .brand-title {
-                letter-spacing: 0.08em;
+                letter-spacing: clamp(0.04em, 0.08em, 0.1em);
             }
             
             .tagline {
-                margin-top: 0.2rem;
+                font-size: clamp(0.9rem, 4vw, 1.2rem);
+                margin-top: clamp(0.3rem, 2vw, 0.5rem);
+                line-height: 1.4;
             }
             
             .services {
-                margin-top: 0.1rem;
+                font-size: clamp(0.6rem, 3vw, 0.9rem);
+                letter-spacing: clamp(0.15em, 0.3em, 0.4em);
+                margin-top: clamp(0.2rem, 1vw, 0.3rem);
+            }
+            
+            .service-divider {
+                margin: 0 clamp(0.3rem, 2vw, 0.8rem);
+            }
+            
+            .contact-email {
+                font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+            }
+            
+            .eagle-crest {
+                width: min(280px, 70vw);
+                height: min(220px, 55vw);
+            }
+            
+            .brand-container::before {
+                filter: blur(2px);
+            }
+            
+            .brand-container:hover::before {
+                width: min(600px, 90vw);
+                height: min(400px, 70vh);
+                filter: blur(6px);
+            }
+        }
+        
+        @media (min-width: 481px) and (max-width: 768px) {
+            .brand-title {
+                font-size: clamp(3.5rem, 12vw, 6rem);
+            }
+            
+            .tagline {
+                font-size: clamp(1.1rem, 3vw, 1.5rem);
+            }
+            
+            .services {
+                font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+            }
+            
+            .eagle-crest {
+                width: min(350px, 50vw);
+                height: min(270px, 40vw);
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .brand-title {
+                font-size: clamp(4rem, 10vw, 8rem);
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .brand-title {
+                font-size: clamp(6rem, 8vw, 11rem);
+            }
+        }
+        
+        /* Landscape mobile orientation */
+        @media (orientation: landscape) and (max-height: 500px) {
+            .brand-title {
+                font-size: clamp(2rem, 8vh, 4rem);
+            }
+            
+            .tagline {
+                font-size: clamp(0.8rem, 3vh, 1.2rem);
+                margin-top: clamp(0.2rem, 1vh, 0.3rem);
+            }
+            
+            .services {
+                font-size: clamp(0.6rem, 2.5vh, 1rem);
+                margin-top: clamp(0.1rem, 0.5vh, 0.2rem);
+            }
+            
+            .footer {
+                bottom: min(30px, 4vh);
+            }
+        }
+        
+        /* Ultra-wide screens */
+        @media (min-width: 1920px) {
+            .brand-title {
+                font-size: clamp(8rem, 6vw, 12rem);
             }
         }
     </style>
@@ -441,7 +511,7 @@ function App() {
                 <!-- Custom eagle image that appears on hover -->
                 <div class="eagle-crest"></div>
                 
-                <!-- Crown ornament -->
+                <!-- Crown ornament - HIDDEN, no longer appears on hover -->
                 <div class="crown-ornament">
                     <svg viewBox="0 0 90 45" xmlns="http://www.w3.org/2000/svg">
                         <g fill="none" stroke="#D4AF37" stroke-width="1">
@@ -479,18 +549,28 @@ function App() {
     </div>
     
     <script>
-        // Enhanced parallax on mouse move
+        // Enhanced responsive parallax on mouse move
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.querySelector('.container');
             const eagle = document.querySelector('.eagle-crest');
             
             container.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 8;
-                const y = (e.clientY / window.innerHeight - 0.5) * 8;
+                // Reduced parallax movement for mobile
+                const isMobile = window.innerWidth <= 768;
+                const multiplier = isMobile ? 4 : 8;
+                
+                const x = (e.clientX / window.innerWidth - 0.5) * multiplier;
+                const y = (e.clientY / window.innerHeight - 0.5) * multiplier;
                 
                 if (eagle) {
                     eagle.style.transform = \`translate(calc(-50% + \${x}px), calc(-50% + \${y}px))\`;
                 }
+            });
+            
+            // Handle window resize to maintain proper layout
+            window.addEventListener('resize', function() {
+                // Force recalculation of viewport units
+                document.documentElement.style.setProperty('--vh', \`\${window.innerHeight * 0.01}px\`);
             });
         });
     </script>
