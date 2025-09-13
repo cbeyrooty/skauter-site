@@ -458,7 +458,7 @@ function App() {
         
         @media (min-width: 769px) and (max-width: 1024px) {
             .brand-title {
-                font-size: clamp(4rem, 10vw, 8rem);
+                font-size: clamp(6rem, 14vw, 10rem);
             }
             
             .tagline {
