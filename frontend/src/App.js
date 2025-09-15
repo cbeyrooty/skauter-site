@@ -435,8 +435,8 @@ function App() {
             
             /* Enhanced mobile footer visibility */
             .footer {
-                bottom: max(60px, 8vh);
-                padding: 0 30px;
+                bottom: max(100px, 15vh);
+                padding: 0 40px;
             }
         }
         
