@@ -320,10 +320,10 @@ function App() {
             font-size: 0.8em;
         }
         
-        /* Responsive footer - FIXED FOR MOBILE VISIBILITY */
+        /* Responsive footer - AGGRESSIVE MOBILE FIX */
         .footer {
             position: absolute;
-            bottom: max(40px, 6vh);
+            bottom: max(80px, 12vh);
             text-align: center;
             z-index: 20;
             opacity: 0;
