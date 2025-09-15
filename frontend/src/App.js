@@ -461,7 +461,7 @@ function App() {
             }
             
             .footer {
-                bottom: max(50px, 7vh);
+                bottom: max(120px, 8vh);
             }
         }
         
