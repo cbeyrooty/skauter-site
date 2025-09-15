@@ -631,11 +631,8 @@ function App() {
     </div>
     
     <script>
-        // Prevent flash of unstyled content and enhanced loading
+        // Enhanced loading and interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Immediately add loaded class for smooth appearance
-            document.body.classList.add('loaded');
-            
             const container = document.querySelector('.container');
             const eagle = document.querySelector('.eagle-crest');
             
