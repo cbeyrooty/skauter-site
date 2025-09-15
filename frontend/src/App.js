@@ -643,10 +643,8 @@ function App() {
     <script>
         // Prevent flash of unstyled content and enhanced loading
         document.addEventListener('DOMContentLoaded', function() {
-            // Add loaded class to body after a brief delay to ensure smooth loading
-            setTimeout(function() {
-                document.body.classList.add('loaded');
-            }, 100);
+            // Immediately add loaded class for smooth appearance
+            document.body.classList.add('loaded');
             
             const container = document.querySelector('.container');
             const eagle = document.querySelector('.eagle-crest');
