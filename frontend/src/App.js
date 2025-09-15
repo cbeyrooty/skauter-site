@@ -40,16 +40,6 @@ function App() {
             font-family: 'Playfair Display', serif;
         }
         
-        /* Prevent flash of unstyled content - IMPROVED */
-        body {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        
-        body.loaded {
-            opacity: 1;
-        }
-        
         /* Main container - always full viewport */
         .container {
             height: 100vh;
