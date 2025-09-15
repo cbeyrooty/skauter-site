@@ -40,6 +40,15 @@ function App() {
             font-family: 'Playfair Display', serif;
         }
         
+        /* Prevent flash of unstyled content */
+        body {
+            visibility: hidden;
+        }
+        
+        body.loaded {
+            visibility: visible;
+        }
+        
         /* Main container - always full viewport */
         .container {
             height: 100vh;
@@ -123,7 +132,7 @@ function App() {
             max-width: 90vw;
         }
         
-        /* Hidden eagle that appears on hover - LOWER Z-INDEX */
+        /* Hidden eagle that appears on hover - NEW IMAGE, BEHIND TEXT */
         .eagle-crest {
             position: absolute;
             top: 50%;
@@ -135,7 +144,7 @@ function App() {
             pointer-events: none;
             transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
-            background-image: url('https://customer-assets.emergentagent.com/job_regal-cinema/artifacts/5fnmknp9_flag-of-albania-double-headed-eagle-albanian-declaration-of-independence-flag-12c817f826e14415f674253c43f0f07f.png');
+            background-image: url('https://customer-assets.emergentagent.com/job_regal-cinema/artifacts/qqb23y2g_11be3fccf281946e79f783aa66b566a3.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -266,7 +275,7 @@ function App() {
             transform: translateY(-50%) translateX(min(25px, 2vw));
         }
         
-        /* Crown ornament above title - REMOVED FROM HOVER */
+        /* Crown ornament - COMPLETELY HIDDEN, NO FLASH */
         .crown-ornament {
             position: absolute;
             top: -50px;
@@ -274,13 +283,11 @@ function App() {
             transform: translateX(-50%);
             width: 90px;
             height: 45px;
-            opacity: 0;
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
-            filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
+            opacity: 0 !important;
+            visibility: hidden !important;
+            display: none !important;
             pointer-events: none;
         }
-        
-        /* Crown will NOT appear on hover */
         
         /* Responsive tagline - HIGHER Z-INDEX and better positioning */
         .tagline {
@@ -322,15 +329,16 @@ function App() {
             font-size: 0.8em;
         }
         
-        /* Responsive footer */
+        /* Responsive footer - FIXED FOR MOBILE VISIBILITY */
         .footer {
             position: absolute;
-            bottom: min(60px, 8vh);
+            bottom: max(40px, 6vh);
             text-align: center;
-            z-index: 10;
+            z-index: 20;
             opacity: 0;
             animation: fadeIn 1.5s ease-out 2s forwards;
             width: 100%;
+            padding: 0 20px;
         }
         
         .contact-email {
@@ -433,6 +441,12 @@ function App() {
                 height: min(400px, 70vh);
                 filter: blur(6px);
             }
+            
+            /* Enhanced mobile footer visibility */
+            .footer {
+                bottom: max(60px, 8vh);
+                padding: 0 30px;
+            }
         }
         
         @media (min-width: 481px) and (max-width: 768px) {
@@ -453,6 +467,10 @@ function App() {
             .eagle-crest {
                 width: min(350px, 50vw);
                 height: min(270px, 40vw);
+            }
+            
+            .footer {
+                bottom: max(50px, 7vh);
             }
         }
         
@@ -501,7 +519,7 @@ function App() {
             }
             
             .footer {
-                bottom: min(30px, 4vh);
+                bottom: max(20px, 3vh);
             }
         }
         
@@ -531,6 +549,11 @@ function App() {
                 margin-top: clamp(0.4rem, 2.5vw, 0.6rem);
                 font-size: clamp(0.5rem, 4vw, 0.8rem);
             }
+            
+            .footer {
+                bottom: max(80px, 10vh);
+                padding: 0 40px;
+            }
         }
         
         /* Extra responsiveness for very wide screens */
@@ -547,6 +570,14 @@ function App() {
             .services {
                 margin-top: clamp(1rem, 1.5vw, 1.8rem);
                 font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+            }
+        }
+        
+        /* Extra mobile safe area for devices with notches */
+        @media (max-width: 480px) and (max-height: 800px) {
+            .footer {
+                bottom: max(80px, 12vh);
+                padding: 0 40px;
             }
         }
     </style>
@@ -568,10 +599,10 @@ function App() {
         <!-- Central heraldic content -->
         <div class="heraldic-center">
             <div class="brand-container">
-                <!-- Custom eagle image that appears on hover - BEHIND TEXT -->
+                <!-- NEW EAGLE IMAGE that appears on hover - BEHIND TEXT -->
                 <div class="eagle-crest"></div>
                 
-                <!-- Crown ornament - HIDDEN, no longer appears on hover -->
+                <!-- Crown ornament - COMPLETELY HIDDEN -->
                 <div class="crown-ornament">
                     <svg viewBox="0 0 90 45" xmlns="http://www.w3.org/2000/svg">
                         <g fill="none" stroke="#D4AF37" stroke-width="1">
@@ -602,15 +633,20 @@ function App() {
             </div>
         </div>
         
-        <!-- Footer -->
+        <!-- Footer - ENHANCED FOR MOBILE VISIBILITY -->
         <footer class="footer">
             <a href="mailto:hello@skauter.al" class="contact-email">hello@skauter.al</a>
         </footer>
     </div>
     
     <script>
-        // Enhanced responsive parallax on mouse move
+        // Prevent flash of unstyled content and enhanced loading
         document.addEventListener('DOMContentLoaded', function() {
+            // Add loaded class to body after a brief delay to ensure smooth loading
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 100);
+            
             const container = document.querySelector('.container');
             const eagle = document.querySelector('.eagle-crest');
             
