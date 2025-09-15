@@ -564,11 +564,11 @@ function App() {
             }
         }
         
-        /* Extra mobile safe area for devices with notches */
+        /* Extra mobile safe area for devices with notches and bottom bars */
         @media (max-width: 480px) and (max-height: 800px) {
             .footer {
-                bottom: max(80px, 12vh);
-                padding: 0 40px;
+                bottom: max(150px, 20vh);
+                padding: 0 60px;
             }
         }
     </style>
